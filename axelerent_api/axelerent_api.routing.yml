@@ -1,0 +1,8 @@
+
+axelerent_api.get_json_node_parsejsonnode:
+  path: '/page_json/{param_1}/{param_2}'
+  defaults:
+    _controller: '\Drupal\axelerent_api\Controller\GetJsonNode::parsejsonnode'
+    _title: 'Getjsonnode'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,5 @@
+name: axelerent_api
+type: module
+description: Axelerent module for test
+core: 8.x
+package: Other

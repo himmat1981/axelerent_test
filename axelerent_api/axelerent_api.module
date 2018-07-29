@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains axelerent_api.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function axelerent_api_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the axelerent_api module.
+    case 'help.page.axelerent_api':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Axelerent module for test') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function axelerent_api_theme() {
+  $theme = [];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function axelerent_api_form_system_site_information_settings_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $config = \Drupal::service('config.factory')->getEditable('system.site');
+  if($config->get('siteapikey'))
+	  $key = $config->get('siteapikey');
+  else
+	  $key = "Not API key yet";
+  $form['site_information']['siteapikey'] = [
+    '#type' => 'textfield',
+    '#title' => t("Site API key."),
+	'#default_value' => $key,
+	'#description' => t('This is site API key for accessing page node'),
+  ];
+  $form['actions']['submit']['#value'] = t("Update configuration");
+  $form['actions']['submit']['#submit'][] = 'axelerent_api_form_submit';
+}
+
+/**
+ * Submit handler for API key logic.
+ */
+function axelerent_api_form_submit(array $form, FormStateInterface $form_state){
+    $config = \Drupal::service('config.factory')->getEditable('system.site');
+	$config->set('siteapikey', $form_state->getValue('siteapikey'))->save();
+    drupal_set_message("Site API key has been saved with value '".$form_state->getValue('siteapikey')."'");
+}
