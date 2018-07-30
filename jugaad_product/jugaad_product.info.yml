@@ -1,0 +1,6 @@
+name: Jugaad products
+type: module
+description: 'Create Jugaad product content type.'
+core: 8.x
+dependencies:
+- node

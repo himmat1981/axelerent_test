@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - jugaad_product
+name: 'Jugaad product'
+type: jugaad_product
+description: 'Content type that can be used to add jugaad product.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

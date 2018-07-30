@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - jugaad_product
+    - node
+  theme:
+    - bartik
+id: jugaadproductpurchase
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: jugaadproduct
+settings:
+  id: jugaadproduct
+  label: 'Jugaad product purchase'
+  provider: jugaad_product
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      jugaad_product: jugaad_product
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

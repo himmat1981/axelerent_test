@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.jugaad_product.body
+    - field.field.node.jugaad_product.field_product_picture
+    - node.type.jugaad_product
+  module:
+    - image
+    - text
+    - user
+_core:
+  default_config_hash: l7vYLGCfAplE47ypdFHtva5n42Y9P4f4B1PNFA1eVzc
+id: node.jugaad_product.default
+targetEntityType: node
+bundle: jugaad_product
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_product_picture:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }
+
